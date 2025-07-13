@@ -1,0 +1,19 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  @media (min-width: 768px) {
+    gap: 3.2rem;
+  }
+}
+.main__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2.4rem;
+
+  @media (min-width: 40rem) {
+    justify-content: space-between;
+  }
+}

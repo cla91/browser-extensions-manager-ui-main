@@ -1,0 +1,35 @@
+@use "mixin";
+
+*,
+*::after,
+*::before {
+  font-family: var(--primary-font-family);
+}
+
+body {
+  @include mixin.text-preset-5;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--color);
+}
+h1,
+h2 {
+  color: var(--heading-color);
+}
+h1 {
+  @include mixin.text-preset-1;
+}
+h2 {
+  @include mixin.text-preset-2;
+}
+.desktop-layout {
+  max-width: 117rem;
+  margin-inline: auto;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: clamp(4rem, 1.257rem + 3.571vw, 6.4rem);
+  padding-block: clamp(2rem, 1.618rem + 1.018vw, 2.4rem);
+  padding-inline: clamp(1.6rem, 0.073rem + 4.071vw, 3.2rem);
+}

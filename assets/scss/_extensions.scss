@@ -1,0 +1,123 @@
+@use "mixin";
+
+.extensions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(27rem, 1fr));
+  gap: 1.2rem;
+}
+.extension {
+  padding: 2rem;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--neutral-0);
+  gap: 2.4rem;
+
+  border: 0.1rem solid var(--neutral-200);
+  box-shadow: 0px 2px 2px rgba(194, 206, 225, 0.2),
+    0px 1px 5px 1px rgba(194, 206, 225, 0.22);
+}
+body.dark-theme .extension {
+  background-color: var(--neutral-800);
+  border-color: var(--neutral-600);
+  box-shadow: none;
+}
+.extension__content {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: repeat(2, auto);
+  column-gap: 1.6rem;
+  row-gap: 0.8rem;
+}
+.extension__logo {
+  grid-row: span 2;
+}
+
+.extension__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.remove-btn {
+  background-color: inherit;
+  color: var(--neutral-900);
+  padding: 0.8rem 1.6rem;
+  border-radius: 999rem;
+  border: 0.1rem solid var(--neutral-300);
+  cursor: pointer;
+  @include mixin.text-preset-6;
+  transition: background-color 0.4s;
+  &:hover {
+    background-color: var(--red-700);
+    border-color: var(--red-700);
+    color: var(--neutral-0);
+  }
+  &:focus {
+    @include mixin.focus-outline;
+  }
+}
+body.dark-theme .remove-btn {
+  border-color: var(--neutral-600);
+  color: var(--neutral-0);
+
+  &:hover {
+    background-color: var(--red-400);
+    border-color: var(--red-400);
+    color: var(--neutral-900);
+  }
+}
+.switch-state {
+  position: relative;
+  height: 2rem;
+  width: 3.6rem;
+  border-radius: 999rem;
+  overflow: hidden;
+  cursor: pointer;
+  &:focus-within {
+    @include mixin.focus-outline;
+  }
+}
+.state-checkbox {
+  height: 0;
+  width: 0;
+  opacity: 0;
+  position: absolute;
+}
+.round-slider {
+  position: absolute;
+  background-color: var(--neutral-300);
+  width: 100%;
+  height: 100%;
+  transition: 0.4s;
+}
+.round-slider::after {
+  content: "";
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  height: 1.6rem;
+  width: 1.6rem;
+  border-radius: 999rem;
+  background-color: var(--neutral-0);
+  transition: 0.4s;
+  box-shadow: 0px 1px 3px rgba(10, 13, 18, 0.3),
+    0px 1px 2px -1px rgba(10, 13, 18, 0.3);
+}
+.state-checkbox:checked + .round-slider {
+  background-color: var(--red-700);
+  &::after {
+    transform: translateX(1.6rem);
+  }
+  &:hover {
+    background-color: var(--red-500);
+  }
+}
+body.dark-theme {
+  .state-checkbox:checked + .round-slider {
+    background-color: var(--red-400);
+    &:hover {
+      background-color: var(--red-500);
+    }
+  }
+}
